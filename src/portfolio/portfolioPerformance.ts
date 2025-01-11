@@ -23,9 +23,10 @@ export function calculatePortfolioPerformance(initialInvestment: number, current
      * Googled: "how to write conditional statements without using if statements"
      * https://www.koderhq.com/tutorial/typescript/conditional-control/
      */
-    performanceSummary = percentageChange > 20 ? "Portfolio has gain significantly"
-                        : percentageChange > 10 ? "Portfolio has gain moderately"
+    performanceSummary = percentageChange > 20 ? "Portfolio has gained significantly"
+                        : percentageChange > 10 ? "Portfolio has gained moderately"
                         : percentageChange > 0.1 ? "Portfolio has gained slightly"
+						: percentageChange > 0 ? "Portfolio has gained slightly"
                         : percentageChange == 0 ? "Portfolio made no changes"
                         : percentageChange > -10 ? "Portfolio has lost slightly"
                         : percentageChange > -20 ? "Portfolio has lost moderately"
