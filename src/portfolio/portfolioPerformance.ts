@@ -13,11 +13,6 @@ export function calculatePortfolioPerformance(initialInvestment: number, current
 	const percentageChange: number = (profitOrLoss / initialInvestment) * 100;
 
 	let performanceSummary: string;
-	// if (percentageChange > 20) {
-	// 	performanceSummary = `The portfolio has gained significantly with a profit of $${profitOrLoss}.`;
-	// } else {
-	// 	performanceSummary = `The portfolio has performed poorly.`;
-	// }
 
     /**
      * Googled: "how to write conditional statements without using if statements"
@@ -39,4 +34,34 @@ export function calculatePortfolioPerformance(initialInvestment: number, current
 		percentageChange,
 		performanceSummary,
 	};
+}
+
+
+interface Asset {
+	name: string,
+	value: number
+}
+
+export function largestAssetFinder(assets: Asset[]): Asset | null {
+	
+	// if the list of assets is empty
+	if(assets.length == 0){
+		return null;
+	}
+
+	// select the first asset in the list
+	let largestAsset: Asset = assets[0]
+	
+	// loop through the list of assets
+	for (let i = 1; i < assets.length; i++){
+
+		// if the an asset is larger, set it as the largestAsset
+		if (assets[i].value > largestAsset.value){
+
+			// loop through until the select asset is the largest
+			largestAsset = assets[i]
+		}
+	}
+
+	return largestAsset;
 }

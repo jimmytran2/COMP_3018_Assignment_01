@@ -85,6 +85,15 @@ describe("calculatePortfolioPerforance function", () => {
         expect(actual.performanceSummary).toBe("Portfolio has lost slightly");
     })
 
+    it("should return correct performance summary for percentageChange of -0.1", () => {
+        const actual = calculatePortfolioPerformance(1000, 999);
+        expect(actual.initialInvestment).toBe(1000);
+        expect(actual.currentValue).toBe(999);
+        expect(actual.profitOrLoss).toBe(-1);
+        expect(actual.percentageChange).toBe(-0.1);
+        expect(actual.performanceSummary).toBe("Portfolio has lost slightly");
+    })
+
     it("should return correct performance summary for percentageChange between -10 and -0.1", () => {
         const actual = calculatePortfolioPerformance(1000, 950);
         expect(actual.initialInvestment).toBe(1000);
@@ -121,7 +130,7 @@ describe("calculatePortfolioPerforance function", () => {
         expect(actual.performanceSummary).toBe("Portfolio has lost significantly");
     })
 
-    it("should return correct performance summary for percentageChange of -30", () => {
+    it("should return correct performance summary for percentageChange over -20", () => {
         const actual = calculatePortfolioPerformance(1000, 700);
         expect(actual.initialInvestment).toBe(1000);
         expect(actual.currentValue).toBe(700);
@@ -129,5 +138,4 @@ describe("calculatePortfolioPerforance function", () => {
         expect(actual.percentageChange).toBe(-30);
         expect(actual.performanceSummary).toBe("Portfolio has lost significantly");
     })
-
 })
