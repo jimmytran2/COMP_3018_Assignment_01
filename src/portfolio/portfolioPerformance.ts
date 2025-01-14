@@ -6,6 +6,13 @@ interface PortfolioSummary {
 	performanceSummary: string;
 }
 
+/**
+ * Calculates the performance of a portfolio based on initial investment and current value of investment.
+ * Provides a summary based on profit or loss and percetnage change.
+ * @param {number} initialInvestment - initial amount invested
+ * @param {number} currentValue - current value of the portfolio
+ * @returns {PortfolioSummary}
+ */
 export function calculatePortfolioPerformance(initialInvestment: number, currentValue: number): PortfolioSummary {
 
 	const profitOrLoss: number = currentValue - initialInvestment;
@@ -42,6 +49,13 @@ interface Asset {
 	value: number
 }
 
+/**
+ * Receives a list of assets. If the list is empty, return null. If the list is populated,
+ * loop through it until the largest asset is found. Return the largest asset
+ * @param {Assets[]} assets - list of assets
+ * @returns {null} - null, if list of assets is empty
+ * @returns {Asset} - asset with largest value
+ */
 export function largestAssetFinder(assets: Asset[]): Asset | null {
 	
 	// if the list of assets is empty
