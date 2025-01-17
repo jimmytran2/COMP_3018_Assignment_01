@@ -58,24 +58,46 @@ interface Asset {
  */
 export function largestAssetFinder(assets: Asset[]): Asset | null {
 	
-	// if the list of assets is empty
 	if(assets.length == 0){
 		return null;
 	}
 
-	// select the first asset in the list
 	let largestAsset: Asset = assets[0]
 	
-	// loop through the list of assets
 	for (let i = 1; i < assets.length; i++){
-
-		// if the an asset is larger, set it as the largestAsset
 		if (assets[i].value > largestAsset.value){
-
-			// loop through until the select asset is the largest
 			largestAsset = assets[i]
 		}
 	}
 
 	return largestAsset;
+}
+
+
+// https://stackoverflow.com/questions/29382389/defining-array-with-multiple-types-in-typescript
+
+
+export function assetPercentageCalculator(assets: Asset[]): {name: string; value: number; percent: number}[] | null{
+
+	if(assets.length == 0){
+		return null;
+	}
+
+	let valueOfAllAssets: number = 0;
+
+	for(let i = 0; i < assets.length; i++){
+		valueOfAllAssets = valueOfAllAssets + assets[i].value;
+	}
+
+	let assetArray: {name: string; value: number; percent: number}[] = [];
+
+	for(let i = 0; i < assets.length; i++){
+		assetArray.push({
+			name: assets[i].name,
+			value: assets[i].value,
+			percent: (assets[i].value / valueOfAllAssets) * 100
+		})
+	}
+
+	return assetArray;
 }
