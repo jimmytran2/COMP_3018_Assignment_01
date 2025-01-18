@@ -1,3 +1,6 @@
+export type {Asset as Asset};
+module.exports = {calculatePortfolioPerformance, largestAssetFinder, assetPercentageCalculator}
+
 interface PortfolioSummary {
 	initialInvestment: number;
 	currentValue: number;
@@ -13,7 +16,7 @@ interface PortfolioSummary {
  * @param {number} currentValue - current value of the portfolio
  * @returns {PortfolioSummary}
  */
-export function calculatePortfolioPerformance(initialInvestment: number, currentValue: number): PortfolioSummary {
+function calculatePortfolioPerformance(initialInvestment: number, currentValue: number): PortfolioSummary {
 
 	const profitOrLoss: number = currentValue - initialInvestment;
 
@@ -56,7 +59,7 @@ interface Asset {
  * @returns {null} - null, if list of assets is empty
  * @returns {Asset} - asset with largest value
  */
-export function largestAssetFinder(assets: Asset[]): Asset | null {
+function largestAssetFinder(assets: Asset[]): Asset | null {
 	
 	if(assets.length == 0){
 		return null;
@@ -76,8 +79,7 @@ export function largestAssetFinder(assets: Asset[]): Asset | null {
 
 // https://stackoverflow.com/questions/29382389/defining-array-with-multiple-types-in-typescript
 
-
-export function assetPercentageCalculator(assets: Asset[]): {name: string; value: number; percent: number}[] | null{
+function assetPercentageCalculator(assets: Asset[]): {name: string; value: number; percent: number}[] | null{
 
 	if(assets.length == 0){
 		return null;
