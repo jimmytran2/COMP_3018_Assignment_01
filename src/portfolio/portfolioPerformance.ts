@@ -22,13 +22,12 @@ function calculatePortfolioPerformance(initialInvestment: number, currentValue: 
 
 	const percentageChange: number = (profitOrLoss / initialInvestment) * 100;
 
-	let performanceSummary: string;
 
     /**
      * Googled: "how to write conditional statements without using if statements"
      * https://www.koderhq.com/tutorial/typescript/conditional-control/
      */
-    performanceSummary = percentageChange > 20 ? "Portfolio has gained significantly"
+    const performanceSummary: string = percentageChange > 20 ? "Portfolio has gained significantly"
                         : percentageChange > 10 ? "Portfolio has gained moderately"
                         : percentageChange > 0.1 ? "Portfolio has gained slightly"
 						: percentageChange > 0 ? "Portfolio has gained slightly"
