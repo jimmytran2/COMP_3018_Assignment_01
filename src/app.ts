@@ -26,7 +26,16 @@ app.get("/tasks", (req, res) => {
     res.send("Retrieve tasks");
 });
 
-
+/** 
+ * @openapi
+ * /api/v1/health:
+ *  get:
+ *   summary: Health checkpoint
+ *   tags: [Health Check]
+ *   responses:
+ *    200:
+ *     description: Health Check
+*/
 app.get("/api/v1/health", (req, res) => {
 	res.json({
 		status: "OK",

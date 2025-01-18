@@ -78,7 +78,12 @@ function largestAssetFinder(assets: Asset[]): Asset | null {
 
 
 // https://stackoverflow.com/questions/29382389/defining-array-with-multiple-types-in-typescript
-
+/**
+ * Calculates the percentage that each asset makes up relative to the total value of all assets
+ * @param {Assets[]} assets - list of assets
+ * @returns {array} - array of objects, each containing, the name, value, and percentage of the portfolio
+ * the asset makes up
+ */
 function assetPercentageCalculator(assets: Asset[]): {name: string; value: number; percentage: number}[] | null{
 
 	if(assets.length == 0){
