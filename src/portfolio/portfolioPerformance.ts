@@ -79,7 +79,7 @@ function largestAssetFinder(assets: Asset[]): Asset | null {
 
 // https://stackoverflow.com/questions/29382389/defining-array-with-multiple-types-in-typescript
 
-function assetPercentageCalculator(assets: Asset[]): {name: string; value: number; percent: number}[] | null{
+function assetPercentageCalculator(assets: Asset[]): {name: string; value: number; percentage: number}[] | null{
 
 	if(assets.length == 0){
 		return null;
@@ -91,13 +91,17 @@ function assetPercentageCalculator(assets: Asset[]): {name: string; value: numbe
 		valueOfAllAssets = valueOfAllAssets + assets[i].value;
 	}
 
-	let assetArray: {name: string; value: number; percent: number}[] = [];
+	if(valueOfAllAssets == 0){
+		return null;
+	}
+
+	let assetArray: {name: string; value: number; percentage: number}[] = [];
 
 	for(let i = 0; i < assets.length; i++){
 		assetArray.push({
 			name: assets[i].name,
 			value: assets[i].value,
-			percent: (assets[i].value / valueOfAllAssets) * 100
+			percentage: Math.floor((assets[i].value / valueOfAllAssets) * 100)
 		})
 	}
 

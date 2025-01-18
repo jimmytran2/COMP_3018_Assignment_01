@@ -146,7 +146,8 @@ describe("largestAssetFinder function", () => {
             {name: "House", value: 20000},
             {name: "Stocks", value: 15000},
             {name: "Bonds", value: 10000}
-        ]
+        ];
+
         const expected: Asset = {name: "House", value: 20000};
 
         const actual: Asset = largestAssetFinder(assets);
@@ -155,7 +156,7 @@ describe("largestAssetFinder function", () => {
     })
 
     it("should return null when there are no assets", () => {
-        const assets: Asset[] = []
+        const assets: Asset[] = [];
         
         const expected: null = null;
 
@@ -169,7 +170,8 @@ describe("largestAssetFinder function", () => {
             {name: "House", value: 10000},
             {name: "Stocks", value: 20000},
             {name: "Bonds", value: 20000}
-        ]
+        ];
+
         const expected: Asset = {name: "Stocks", value: 20000};
 
         const actual: Asset = largestAssetFinder(assets);
@@ -182,7 +184,8 @@ describe("largestAssetFinder function", () => {
             {name: "House", value: -20000},
             {name: "Stocks", value: -15000},
             {name: "Bonds", value: -10000}
-        ]
+        ];
+
         const expected: Asset = {name: "Bonds", value: -10000};
 
         const actual: Asset = largestAssetFinder(assets);
@@ -193,7 +196,8 @@ describe("largestAssetFinder function", () => {
     it("should the only asset in the list, if theres only 1 asset", () => {
         const assets: Asset[] = [
             {name: "House", value: 10000},
-        ]
+        ];
+
         const expected: Asset = {name: "House", value: 10000};
 
         const actual: Asset = largestAssetFinder(assets);
@@ -204,5 +208,90 @@ describe("largestAssetFinder function", () => {
 })
 
 describe("assetPercentageCalculator", () => {
-    
+    it("should return null when list of assets is empty", () => {
+        const assets: Asset[] = [];
+
+        const expected: null = null;
+        
+        const actual: Asset = assetPercentageCalculator(assets);
+
+        expect(expected).toStrictEqual(actual);
+
+    })
+
+    it("should return correct calculated percentages for assets with different values", () => {
+        const assets: Asset[] = [
+            {name: "House", value: 100},
+            {name: "Stocks", value: 300},
+            {name: "Bonds", value: 600}
+        ];
+        const expected: {name: string; value: number; percentage: number}[] = [
+            {name: "House", value: 100, percentage: 10},
+            {name: "Stocks", value: 300, percentage: 30},
+            {name: "Bonds", value: 600, percentage: 60}
+        ];
+        
+        const actual: Asset = assetPercentageCalculator(assets);
+
+        expect(expected).toStrictEqual(actual);
+    })
+
+    it("should return correct calculated percentages for assets with equal values", () => {
+        const assets: Asset[] = [
+            {name: "House", value: 100},
+            {name: "Stocks", value: 100},
+            {name: "Bonds", value: 100}
+        ];
+        const expected: {name: string; value: number; percentage: number}[] = [
+            {name: "House", value: 100, percentage: 33},
+            {name: "Stocks", value: 100, percentage: 33},
+            {name: "Bonds", value: 100, percentage: 33}
+        ];
+        
+        const actual: Asset = assetPercentageCalculator(assets);
+
+        expect(expected).toStrictEqual(actual);
+    })
+
+    it("should return correct calculated percentages with assets that have a value of 0", () => {
+        const assets: Asset[] = [
+            {name: "House", value: 0},
+            {name: "Stocks", value: 0},
+            {name: "Bonds", value: 600}
+        ];
+        const expected: {name: string; value: number; percentage: number}[] = [
+            {name: "House", value: 0, percentage: 0},
+            {name: "Stocks", value: 0, percentage: 0},
+            {name: "Bonds", value: 600, percentage: 100}
+        ];
+        
+        const actual: Asset = assetPercentageCalculator(assets);
+
+        expect(expected).toStrictEqual(actual);
+    })
+
+    it("should return null when all assets have 0 value", () => {
+        const assets: Asset[] = [
+            {name: "House", value: 0},
+            {name: "Stocks", value: 0},
+            {name: "Bonds", value: 0}
+        ];
+        const expected: null = null;
+        const actual: Asset = assetPercentageCalculator(assets);
+
+        expect(expected).toStrictEqual(actual);
+    })
+
+    it("should return correct calculated percentage with 1 asset", () => {
+        const assets: Asset[] = [
+            {name: "House", value: 250}
+        ];
+        const expected: {name: string; value: number; percentage: number}[] = [
+            {name: "House", value: 250, percentage: 100}
+        ];
+        
+        const actual: Asset = assetPercentageCalculator(assets);
+
+        expect(expected).toStrictEqual(actual);
+    })
 })
