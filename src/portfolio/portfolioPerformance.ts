@@ -67,7 +67,7 @@ function largestAssetFinder(assets: Asset[]): Asset | null {
 
 	let largestAsset: Asset = assets[0]
 	
-	for (let i = 1; i < assets.length; i++){
+	for (let i:number = 1; i < assets.length; i++){
 		if (assets[i].value > largestAsset.value){
 			largestAsset = assets[i]
 		}
@@ -92,7 +92,7 @@ function assetPercentageCalculator(assets: Asset[]): {name: string; value: numbe
 
 	let valueOfAllAssets: number = 0;
 
-	for(let i = 0; i < assets.length; i++){
+	for(let i: number = 0; i < assets.length; i++){
 		valueOfAllAssets = valueOfAllAssets + assets[i].value;
 	}
 
@@ -100,9 +100,9 @@ function assetPercentageCalculator(assets: Asset[]): {name: string; value: numbe
 		return null;
 	}
 
-	let assetArray: {name: string; value: number; percentage: number}[] = [];
+	const assetArray: {name: string; value: number; percentage: number}[] = [];
 
-	for(let i = 0; i < assets.length; i++){
+	for(let i: number = 0; i < assets.length; i++){
 		assetArray.push({
 			name: assets[i].name,
 			value: assets[i].value,
