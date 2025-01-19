@@ -2,6 +2,37 @@ import express, { Express } from "express";
 
 import setupSwagger from  "../config/swagger";
 
+const {calculatePortfolioPerformance, largestAssetFinder, assetPercentageCalculator} = require ("../src/portfolio/portfolioPerformance")
+import { Asset } from "../src/portfolio/portfolioPerformance";
+
+// Scenario 1
+const initialInvestment: number = 1000;
+const currentValue: number = 1200;
+
+const portfolio = calculatePortfolioPerformance(initialInvestment, currentValue);
+console.log(portfolio);
+
+// Scenario 2
+const assetsListOne: Asset[] = [
+	{name: "Stocks", value: 15000},
+	{name: "House", value: 20000},
+	{name: "Bonds", value: 10000},
+];
+
+const largestAsset: Asset = largestAssetFinder(assetsListOne);
+console.log(largestAsset);
+
+// Scenario 3
+const assetsListTwo: Asset[] = [
+	{name: "House", value: 100},
+	{name: "Stocks", value: 300},
+	{name: "Bonds", value: 600},
+	{name: "Business", value: 650}
+];
+
+const assetPercentages: Asset = assetPercentageCalculator(assetsListTwo);
+console.log(assetPercentages);
+
 // Initialize Express application
 const app: Express = express();
 

@@ -1,6 +1,5 @@
 const { calculatePortfolioPerformance, largestAssetFinder, assetPercentageCalculator} = require ("../src/portfolio/portfolioPerformance")
 import { Asset } from "../src/portfolio/portfolioPerformance";
-// jest.mock("../src/portfolio/portfolioPerformance");
 
 describe("calculatePortfolioPerforance function", () => {
     it("should return correct performance summary for percentageChange over 20", () => {

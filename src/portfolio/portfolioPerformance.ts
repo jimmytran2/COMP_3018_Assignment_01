@@ -24,7 +24,7 @@ function calculatePortfolioPerformance(initialInvestment: number, currentValue: 
 
 
     /**
-     * Googled: "how to write conditional statements without using if statements"
+     * "how to write conditional statements without using if statements"
      * https://www.koderhq.com/tutorial/typescript/conditional-control/
      */
     const performanceSummary: string = percentageChange > 20 ? "Portfolio has gained significantly"
@@ -68,15 +68,18 @@ function largestAssetFinder(assets: Asset[]): Asset | null {
 	
 	for (let i:number = 1; i < assets.length; i++){
 		if (assets[i].value > largestAsset.value){
-			largestAsset = assets[i]
+			largestAsset = assets[i];
 		}
 	}
 
 	return largestAsset;
 }
 
+/**
+ * how to write typescript functions that return an array
+ * https://stackoverflow.com/questions/29382389/defining-array-with-multiple-types-in-typescript
+ */
 
-// https://stackoverflow.com/questions/29382389/defining-array-with-multiple-types-in-typescript
 /**
  * Calculates the percentage that each asset makes up relative to the total value of all assets
  * @param {Assets[]} assets - list of assets
@@ -105,6 +108,7 @@ function assetPercentageCalculator(assets: Asset[]): {name: string; value: numbe
 		assetArray.push({
 			name: assets[i].name,
 			value: assets[i].value,
+			// using floor to prevent calculations with recurring decimals
 			percentage: Math.floor((assets[i].value / valueOfAllAssets) * 100)
 		})
 	}
