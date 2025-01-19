@@ -3,13 +3,13 @@ import express, { Express } from "express";
 import setupSwagger from  "../config/swagger";
 
 const {calculatePortfolioPerformance, largestAssetFinder, assetPercentageCalculator} = require ("../src/portfolio/portfolioPerformance")
-import { Asset } from "../src/portfolio/portfolioPerformance";
+import { Asset, PortfolioSummary } from "../src/portfolio/portfolioPerformance";
 
 // Scenario 1
 const initialInvestment: number = 1000;
 const currentValue: number = 1200;
 
-const portfolio = calculatePortfolioPerformance(initialInvestment, currentValue);
+const portfolio: PortfolioSummary = calculatePortfolioPerformance(initialInvestment, currentValue);
 console.log(portfolio);
 
 // Scenario 2

@@ -1,4 +1,6 @@
-export type {Asset as Asset};
+export type {Asset as Asset,
+			PortfolioSummary as PortfolioSummary
+			};
 module.exports = {calculatePortfolioPerformance, largestAssetFinder, assetPercentageCalculator}
 
 interface PortfolioSummary {
